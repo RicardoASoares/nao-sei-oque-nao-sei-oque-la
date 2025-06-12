@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Favor não errar nenhuma</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="containerGeral">
+
+    <!-- PERGUNTA 1 -->
+    <div class="container" id="pergunta1">
+      <p class="titulo">Qual dessas datas é a nossa data?</p>
+      <label><input type="radio" name="data" value="06/09/2023"> 06/09/2023</label><br />
+      <label><input type="radio" name="data" value="10/07/2024"> 10/07/2024</label><br />
+      <label><input type="radio" name="data" value="09/06/2023"> 09/06/2023</label><br />
+      <label><input type="radio" name="data" value="06/09/2024"> 06/09/2024</label><br />
+      <button onclick="irParaPergunta2()">Enviar</button>
+      <div class="mensagem" id="mensagem1"></div>
+    </div>
+
+    <!-- PERGUNTA 2 -->
+    <div class="container escondido" id="pergunta2">
+      <p class="titulo">Onde foi nosso primeiro beijo?</p>
+      <label><input type="radio" name="encontro" value="Praia"> Praia</label><br />
+      <label><input type="radio" name="encontro" value="Exposicao"> Exposição</label><br />
+      <label><input type="radio" name="encontro" value="Escola"> Escola</label><br />
+      <label><input type="radio" name="encontro" value="Predio"> Na frente do prédio com uma câmera gigante filmando a gente</label><br />
+      <button onclick="irParaPergunta3()">Enviar</button>
+      <div class="mensagem" id="mensagem2"></div>
+    </div>
+
+    <!-- PERGUNTA 3 -->
+    <div class="container escondido" id="pergunta3">
+      <p class="titulo">Qual nosso streamer favorito?</p>
+      <label><input type="radio" name="streamer" value="Alanzoka"> Alanzoka</label><br />
+      <button onclick="finalizar()">Enviar</button>
+      <div class="mensagem" id="mensagem3"></div>
+    </div>
+
+    <!-- MENSAGEM FINAL -->
+    <div class="container escondido" id="mensagemFinal">
+      <p class="titulo">Parabéns, espero que você não tenha errado nenhuma</p>
+      <button onclick="redirecionar()">Receber recompensa!</button>
+    </div>
+
+  </div>
+
+  <script>
+    function irParaPergunta2() {
+      const radios = document.querySelectorAll('input[name="data"]');
+      const mensagem = document.getElementById('mensagem1');
+      mensagem.textContent = '';
+
+      let selecionado = false;
+      let valorSelecionado = '';
+
+      radios.forEach(radio => {
+        if (radio.checked) {
+          selecionado = true;
+          valorSelecionado = radio.value;
+        }
+      });
+
+      if (!selecionado) {
+        mensagem.textContent = 'Responde primeiro';
+        return;
+      }
+
+      if (valorSelecionado !== "06/09/2023") {
+        mensagem.textContent = 'Não acredito que você errou';
+        return;
+      }
+
+      document.getElementById('pergunta1').classList.add('escondido');
+      document.getElementById('pergunta2').classList.remove('escondido');
+    }
+
+    function irParaPergunta3() {
+      const radios = document.querySelectorAll('input[name="encontro"]');
+      const mensagem = document.getElementById('mensagem2');
+      mensagem.textContent = '';
+
+      let selecionado = false;
+      let valorSelecionado = '';
+
+      radios.forEach(radio => {
+        if (radio.checked) {
+          selecionado = true;
+          valorSelecionado = radio.value;
+        }
+      });
+
+      if (!selecionado) {
+        mensagem.textContent = 'Responde primeiro';
+        return;
+      }
+
+      if (valorSelecionado !== "Predio") {
+        mensagem.textContent = 'Tava difícil mesmo essa, tá tudo bem';
+        return;
+      }
+
+      document.getElementById('pergunta2').classList.add('escondido');
+      document.getElementById('pergunta3').classList.remove('escondido');
+    }
+
+    function finalizar() {
+      const radios = document.querySelectorAll('input[name="streamer"]');
+      const mensagem = document.getElementById('mensagem3');
+      mensagem.textContent = '';
+
+      let selecionado = false;
+      let valorSelecionado = '';
+
+      radios.forEach(radio => {
+        if (radio.checked) {
+          selecionado = true;
+          valorSelecionado = radio.value;
+        }
+      });
+
+      if (!selecionado) {
+        mensagem.textContent = 'Responde primeiro';
+        return;
+      }
+
+      if (valorSelecionado !== "Alanzoka") {
+        mensagem.textContent = 'Errou o streamer?????????';
+        return;
+      }
+
+      document.getElementById('pergunta3').classList.add('escondido');
+      document.getElementById('mensagemFinal').classList.remove('escondido');
+    }
+
+    function redirecionar() {
+      window.location.href = "PaginaPrincipal/index-pagina-principal.html";
+    }
+  </script>
+</body>
+
+</html>

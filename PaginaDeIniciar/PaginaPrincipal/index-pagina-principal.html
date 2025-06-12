@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;700&family=Raleway:wght@400;700&display=swap"
+        rel="stylesheet">
+    <title>Eu te amo</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="imagemAleatoria">
+            <img src="Fotos/imagem1.jpeg" class="active">
+            <img src="Fotos/imagem2.jpeg">
+            <img src="Fotos/imagem3.jpeg">
+            <img src="Fotos/imagem4.jpeg">
+            <img src="Fotos/imagem5.jpeg">
+            <img src="Fotos/imagem6.jpeg">
+            <img src="Fotos/imagem7.jpeg">
+            <img src="Fotos/imagem8.jpeg">
+            <img src="Fotos/imagem9.jpeg">
+        </div>
+
+        <p>Feliz Dia dos <span>Namorados</span> amor.
+            Obrigado por estar ao meu lado, me apoiando em todos os momentos, sejam eles bons ou ruins.
+            Obrigado pelos sorrisos, pelos carinhos, e até pelas brigas, porque mesmo nos momentos difíceis,
+            a gente continua se escolhendo.</p>
+        <h3>Eu te <span>amo</span> nabi</h3>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    const quantidadeInical = 50; // explosão de corações
+    const quantidadeContinua = 1; // corações que continuam caindo
+    const container = document.body;
+
+    const criarCoracao = (explosao = false) => {
+      const coracao = document.createElement("div");
+      coracao.className = "coracao";
+      coracao.innerHTML = "❤️";
+      coracao.style.left = Math.random() * 100 + "vw";
+      coracao.style.fontSize = Math.random() * 20 + 20 + "px";
+      coracao.style.animationDuration = (Math.random() * 3 + 2) + "s";
+
+      if (explosao) {
+        coracao.style.top = Math.random() * 100 + "vh";
+        coracao.style.position = "fixed";
+        coracao.style.opacity = 1;
+        coracao.style.animation = "explodir 1s ease-out forwards";
+      } else {
+        coracao.style.top = "-5%";
+      }
+
+      container.appendChild(coracao);
+
+      setTimeout(() => {
+        coracao.remove();
+      }, 5000);
+    };
+
+    // Explosão inicial
+    for (let i = 0; i < quantidadeInical; i++) {
+      criarCoracao(true);
+    }
+
+    // Corações caindo
+    setInterval(() => {
+      for (let i = 0; i < quantidadeContinua; i++) {
+        criarCoracao();
+      }
+    }, 500);
+  });
+        const imgs = document.querySelectorAll('.imagemAleatoria img');
+        let i = 0;
+
+        setInterval(() => {
+            imgs[i].classList.remove('active');
+            i = (i + 1) % imgs.length;
+            imgs[i].classList.add('active');
+        }, 3000);
+        window.addEventListener('DOMContentLoaded', () => {
+        const audio = document.getElementById('musicaFundo');
+        audio.volume = 0.30; 
+  });
+    </script>
+    
+    <audio id="musicaFundo" autoplay loop>
+    <source src="Musica/Musica.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+    </audio>
+</body>
+
+</html>
+</div>
+
+
+
+
+
+</body>
+
+</html>
